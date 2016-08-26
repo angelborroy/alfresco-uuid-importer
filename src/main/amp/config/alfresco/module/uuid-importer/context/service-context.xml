@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+
+    <bean id="importerComponent" class="es.keensoft.alfresco.importer.EnhancedStrategyImporterComponent">
+        <property name="namespaceService">
+            <ref bean="NamespaceService" />
+        </property>
+        <property name="dictionaryService">
+            <ref bean="DictionaryService" />
+        </property>
+        <property name="nodeService">
+            <ref bean="NodeService" />
+        </property>
+        <property name="contentService">
+            <ref bean="ContentService" />
+        </property>
+        <property name="ruleService">
+            <ref bean="RuleService" />
+        </property>
+        <property name="permissionService">
+           <ref bean="PermissionService" />
+        </property>
+        <property name="authorityService">
+           <ref bean="AuthorityService" />
+        </property>
+        <property name="viewParser">
+            <ref bean="viewParser" />
+        </property>
+        <property name="behaviourFilter">
+            <ref bean="policyBehaviourFilter" />
+        </property>
+        <property name="searchService">
+            <ref bean="searchService" />
+        </property>
+        <property name="ownableService">
+           <ref bean="ownableService" />
+        </property>
+        <property name="versionService">
+           <ref bean="versionService" />
+        </property>
+        <property name="dbNodeService">
+            <ref bean="mtAwareNodeService" />
+        </property>
+        <property name="hiddenAspect">
+            <ref bean="hiddenAspect" />
+        </property>
+        <property name="contentUsageImpl">
+            <ref bean="contentUsageImpl"/>
+        </property>
+        <property name="importStrategy">
+            <ref bean="createNewPreservingExistingImportStrategy"/>
+        </property>
+    </bean>
+    
+    <bean id="createNewPreservingExistingImportStrategy" class="es.keensoft.alfresco.importer.CreateNewNodePreservingExistingImporterStrategy">
+	    <property name="nodeService">
+	        <ref bean="NodeService"/>
+	    </property>
+        <property name="ruleService">
+            <ref bean="RuleService" />
+        </property>
+        <property name="permissionService">
+           <ref bean="PermissionService" />
+        </property>
+        <property name="authorityService">
+           <ref bean="AuthorityService" />
+        </property>
+        <property name="ownableService">
+           <ref bean="ownableService" />
+        </property>
+        <property name="behaviourFilter">
+            <ref bean="policyBehaviourFilter" />
+        </property>
+    </bean>
+
+</beans>
